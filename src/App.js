@@ -7,6 +7,7 @@ import { Route } from 'react-router-dom';
 import { Welcome } from './pages/Welcome';
 import { Product } from './pages/Product';
 import { ProductDetail } from './pages/ProductDetail';
+import { Link } from 'react-router-dom';
 //add validation...
 
 function App() {
@@ -57,21 +58,40 @@ function App() {
 
   return (
     <>
+      <div>
+        <nav>
+          <h1>HEADER</h1>
+          <ul>
+            <li>
+              <Link to="/welcome">Welcome</Link>
+            </li>
+            <li>
+              <Link to="/product">PRODUCT</Link>
+            </li>
+
+            <li>
+              <Link to="/product-detail">PRODUCT-DETAIL</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <div className="container">
         <Route path="/welcome">
           <Welcome />
         </Route>
-        <Route path="/product">
+        <Route path="/product" exact>
           <Product />
         </Route>
-        <Route path="/product-detail/:productId/:productName">
+        <Route path="/product/:id">
+          <h1>Hello</h1>
+        </Route>
+        <Route path="/product-detail/:productId">
           <ProductDetail />
         </Route>
       </div>
-
-      <Header title={title} searchBar={true} />
+      {/* <Header title={title} searchBar={true} />
       <AddEmployee addEmployee={addEmployee} />
-      <EmployeeList employeeList={employeeList} onDelete={onDelete} />
+      <EmployeeList employeeList={employeeList} onDelete={onDelete} /> */}
     </>
   );
 }
