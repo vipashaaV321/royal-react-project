@@ -8,6 +8,7 @@ import { Welcome } from './pages/Welcome';
 import { Product } from './pages/Product';
 import { ProductDetail } from './pages/ProductDetail';
 import { Link } from 'react-router-dom';
+import { SimpleForm } from './pages/Form';
 //add validation...
 
 function App() {
@@ -58,8 +59,9 @@ function App() {
 
   return (
     <>
-      <div>
-        <nav>
+      <SimpleForm />
+      {/* <div> */}
+      {/* <nav>
           <h1>HEADER</h1>
           <ul>
             <li>
