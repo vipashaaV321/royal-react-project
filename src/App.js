@@ -1,5 +1,5 @@
 import Header from './Components/Header';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { EmployeeList } from './Components/EmployeeList';
 import { AddEmployee } from './Components/addEmployee';
 import React from 'react';
@@ -9,9 +9,18 @@ import { Product } from './pages/Product';
 import { ProductDetail } from './pages/ProductDetail';
 import { Link } from 'react-router-dom';
 import { SimpleForm } from './pages/Form';
+import Api from './API';
 //add validation...
 
 function App() {
+  useEffect(() => {
+    // GET request using fetch inside useEffect React hook
+    fetch('https://api.npms.io/v2/search?q=react')
+      .then(response => response.json())
+      .then(data => setTotalReactPackages(data.total));
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
   var title = 'Emp management';
 
   const onDelete = employee => {
@@ -59,7 +68,8 @@ function App() {
 
   return (
     <>
-      <SimpleForm />
+      <Api />
+      {/* <SimpleForm /> */}
       {/* <div> */}
       {/* <nav>
           <h1>HEADER</h1>
